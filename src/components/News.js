@@ -235,16 +235,6 @@ export default function News(props) {
     science: '🔬'
   };
 
-  const categoryColors = {
-    general: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    business: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    entertainment: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-    sports: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-    technology: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    health: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-    science: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
-  };
-
   return (
     <div className="container-fluid px-3 px-md-4 px-lg-5 my-3 my-md-4">
       <div className="hero-section">
