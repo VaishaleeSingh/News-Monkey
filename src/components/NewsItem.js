@@ -120,8 +120,13 @@ export default function NewsItem(props) {
             {safeDesc.length > 140 ? `${safeDesc.slice(0, 140)}...` : safeDesc}
           </p>
 
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12, flexWrap: "wrap", gap: "8px" }}>
-            <small style={{ color: metaColor, fontSize: "0.8rem", fontWeight: 500 }}>
+          <div className="card-footer-meta">
+            <small style={{ 
+              color: metaColor, 
+              fontSize: "0.8rem", 
+              fontWeight: 500,
+              lineHeight: 1.4
+            }}>
               By {author || "Unknown"} • {safeDate}
             </small>
 
@@ -130,7 +135,13 @@ export default function NewsItem(props) {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-read"
-              style={buttonStyle}
+              style={{
+                ...buttonStyle,
+                minHeight: "44px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
               onMouseEnter={(e) => {
                 e.target.style.transform = "translateY(-2px) scale(1.05)";
                 e.target.style.boxShadow = isDark 

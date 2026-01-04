@@ -2,14 +2,9 @@ import React from "react";
 
 export default function Spinner() {
   return (
-    <div className="text-center my-5" style={{ padding: '40px 0' }}>
-      <div className="spinner-container" style={{ 
-        display: 'inline-block',
-        position: 'relative',
-        width: '80px',
-        height: '80px'
-      }}>
-        <div style={{
+    <div className="text-center my-5 spinner-wrapper">
+      <div className="spinner-container">
+        <div className="spinner-ring" style={{
           boxSizing: 'border-box',
           display: 'block',
           position: 'absolute',
@@ -21,7 +16,7 @@ export default function Spinner() {
           borderRadius: '50%',
           animation: 'spinner-rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite'
         }}></div>
-        <div style={{
+        <div className="spinner-ring" style={{
           boxSizing: 'border-box',
           display: 'block',
           position: 'absolute',
@@ -34,7 +29,7 @@ export default function Spinner() {
           animation: 'spinner-rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite',
           animationDelay: '-0.45s'
         }}></div>
-        <div style={{
+        <div className="spinner-ring" style={{
           boxSizing: 'border-box',
           display: 'block',
           position: 'absolute',
@@ -47,7 +42,7 @@ export default function Spinner() {
           animation: 'spinner-rotate 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite',
           animationDelay: '-0.3s'
         }}></div>
-        <div style={{
+        <div className="spinner-ring" style={{
           boxSizing: 'border-box',
           display: 'block',
           position: 'absolute',

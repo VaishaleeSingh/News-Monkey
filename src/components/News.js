@@ -246,7 +246,7 @@ export default function News(props) {
   };
 
   return (
-    <div className="container my-4">
+    <div className="container-fluid px-3 px-md-4 px-lg-5 my-3 my-md-4">
       <div className="hero-section">
         <h1 className="hero-title">
           {categoryEmojis[category] || '📰'} Top {category.charAt(0).toUpperCase() + category.slice(1)} Headlines
@@ -259,48 +259,32 @@ export default function News(props) {
       {loading && <Spinner />}
 
       {error && (
-        <div className="alert alert-danger fade-in" role="alert" style={{
-          borderRadius: '16px',
-          padding: '20px',
-          background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%)',
-          border: '1px solid rgba(239, 68, 68, 0.3)',
-          boxShadow: '0 4px 14px rgba(239, 68, 68, 0.2)',
-          marginBottom: '30px'
-        }}>
-          <strong style={{ fontSize: '1.1rem', display: 'block', marginBottom: '8px' }}>⚠️ Error:</strong>
+        <div className="alert alert-danger fade-in responsive-alert" role="alert">
+          <strong className="alert-title">⚠️ Error:</strong>
           <span>{error}</span>
-          <br />
-          <small style={{ opacity: 0.8, marginTop: '8px', display: 'block' }}>
+          <small className="alert-meta">
             Country: {country.toUpperCase()} | Category: {category}
           </small>
         </div>
       )}
 
       {!loading && !error && articles.length === 0 && (
-        <div className="alert alert-warning fade-in" role="alert" style={{
-          borderRadius: '16px',
-          padding: '20px',
-          background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%)',
-          border: '1px solid rgba(251, 191, 36, 0.3)',
-          boxShadow: '0 4px 14px rgba(251, 191, 36, 0.2)',
-          marginBottom: '30px'
-        }}>
-          <strong style={{ fontSize: '1.1rem', display: 'block', marginBottom: '8px' }}>📭 No articles found</strong>
+        <div className="alert alert-warning fade-in responsive-alert" role="alert">
+          <strong className="alert-title">📭 No articles found</strong>
           <span>No articles found for this category and country combination.</span>
-          <br />
-          <small style={{ opacity: 0.8, marginTop: '8px', display: 'block' }}>
+          <small className="alert-meta">
             Try selecting a different country or category.
           </small>
         </div>
       )}
 
-      <div className="row">
+      <div className="row g-3 g-md-4">
         {!error &&
           articles.map((article, index) => {
             const isLast = index === articles.length - 1;
             return (
               <div
-                className="col-md-4"
+                className="col-12 col-sm-6 col-md-6 col-lg-4"
                 key={article.url || article.link || index}
                 ref={isLast ? lastArticleRef : null}
               >
