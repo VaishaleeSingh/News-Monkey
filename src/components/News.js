@@ -225,27 +225,72 @@ export default function News(props) {
     [loading, loadingMore, page, totalResults, pageSize, fetchNews]
   );
 
+  const categoryEmojis = {
+    general: '📰',
+    business: '💼',
+    entertainment: '🎬',
+    sports: '⚽',
+    technology: '💻',
+    health: '🏥',
+    science: '🔬'
+  };
+
+  const categoryColors = {
+    general: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    business: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    entertainment: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    sports: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    technology: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    health: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+    science: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+  };
+
   return (
     <div className="container my-4">
-      <h2 className="mb-3" style={{ marginTop: "70px" }}>
-        📰 Top {category.charAt(0).toUpperCase() + category.slice(1)} Headlines
-      </h2>
+      <div className="hero-section">
+        <h1 className="hero-title">
+          {categoryEmojis[category] || '📰'} Top {category.charAt(0).toUpperCase() + category.slice(1)} Headlines
+        </h1>
+        <p className="hero-subtitle">
+          Stay updated with the latest news from around the world
+        </p>
+      </div>
 
       {loading && <Spinner />}
 
       {error && (
-        <div className="alert alert-danger" role="alert">
-          <strong>Error:</strong> {error}
+        <div className="alert alert-danger fade-in" role="alert" style={{
+          borderRadius: '16px',
+          padding: '20px',
+          background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%)',
+          border: '1px solid rgba(239, 68, 68, 0.3)',
+          boxShadow: '0 4px 14px rgba(239, 68, 68, 0.2)',
+          marginBottom: '30px'
+        }}>
+          <strong style={{ fontSize: '1.1rem', display: 'block', marginBottom: '8px' }}>⚠️ Error:</strong>
+          <span>{error}</span>
           <br />
-          <small>Country: {country.toUpperCase()} | Category: {category}</small>
+          <small style={{ opacity: 0.8, marginTop: '8px', display: 'block' }}>
+            Country: {country.toUpperCase()} | Category: {category}
+          </small>
         </div>
       )}
 
       {!loading && !error && articles.length === 0 && (
-        <div className="alert alert-warning" role="alert">
-          No articles found for this category and country combination.
+        <div className="alert alert-warning fade-in" role="alert" style={{
+          borderRadius: '16px',
+          padding: '20px',
+          background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%)',
+          border: '1px solid rgba(251, 191, 36, 0.3)',
+          boxShadow: '0 4px 14px rgba(251, 191, 36, 0.2)',
+          marginBottom: '30px'
+        }}>
+          <strong style={{ fontSize: '1.1rem', display: 'block', marginBottom: '8px' }}>📭 No articles found</strong>
+          <span>No articles found for this category and country combination.</span>
           <br />
-          <small>Try selecting a different country or category.</small>
+          <small style={{ opacity: 0.8, marginTop: '8px', display: 'block' }}>
+            Try selecting a different country or category.
+          </small>
         </div>
       )}
 

@@ -18,14 +18,20 @@ export default function NewsItem(props) {
 
   // button colors (contrast)
   const buttonStyle = {
-    background: isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.9)",
-    color: isDark ? "#fff" : "#fff",
+    background: isDark 
+      ? "linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%)"
+      : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    color: "#fff",
     border: "none",
-    padding: "8px 12px",
-    borderRadius: 10,
-    fontWeight: 600,
+    padding: "10px 18px",
+    borderRadius: 12,
+    fontWeight: 700,
     textDecoration: "none",
     display: "inline-block",
+    boxShadow: isDark 
+      ? "0 4px 14px rgba(102, 126, 234, 0.3)"
+      : "0 4px 14px rgba(102, 126, 234, 0.4)",
+    transition: "all 0.3s ease",
   };
 
   // safe values
@@ -67,13 +73,18 @@ export default function NewsItem(props) {
               position: "absolute",
               right: 12,
               top: 12,
-              padding: "6px 10px",
-              borderRadius: 999,
+              padding: "8px 14px",
+              borderRadius: 20,
               fontSize: "0.75rem",
               fontWeight: 700,
               color: "#fff",
-              background: "rgba(220,38,38,0.95)",
-              boxShadow: "0 6px 18px rgba(2,6,23,0.18)",
+              background: "linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(185, 28, 28, 0.95) 100%)",
+              boxShadow: "0 8px 24px rgba(220, 38, 38, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
             }}
           >
             {safeSource}
@@ -85,11 +96,11 @@ export default function NewsItem(props) {
             className="card-title"
             style={{
               margin: 0,
-              lineHeight: 1.2,
-              fontSize: "1.05rem",
-              fontWeight: 700,
+              lineHeight: 1.4,
+              fontSize: "1.15rem",
+              fontWeight: 800,
               color: textColor,
-              textShadow: isDark ? "0 1px 0 rgba(0,0,0,0.35)" : "none",
+              letterSpacing: "-0.02em",
             }}
           >
             {safeTitle.length > 100 ? `${safeTitle.slice(0, 100)}...` : safeTitle}
@@ -102,13 +113,15 @@ export default function NewsItem(props) {
               fontSize: "0.95rem",
               color: descColor,
               flex: 1,
+              lineHeight: 1.6,
+              fontWeight: 400,
             }}
           >
             {safeDesc.length > 140 ? `${safeDesc.slice(0, 140)}...` : safeDesc}
           </p>
 
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
-            <small style={{ color: metaColor }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12, flexWrap: "wrap", gap: "8px" }}>
+            <small style={{ color: metaColor, fontSize: "0.8rem", fontWeight: 500 }}>
               By {author || "Unknown"} • {safeDate}
             </small>
 
@@ -118,6 +131,18 @@ export default function NewsItem(props) {
               rel="noopener noreferrer"
               className="btn-read"
               style={buttonStyle}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "translateY(-2px) scale(1.05)";
+                e.target.style.boxShadow = isDark 
+                  ? "0 8px 24px rgba(102, 126, 234, 0.5)"
+                  : "0 8px 24px rgba(102, 126, 234, 0.6)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0) scale(1)";
+                e.target.style.boxShadow = isDark 
+                  ? "0 4px 14px rgba(102, 126, 234, 0.3)"
+                  : "0 4px 14px rgba(102, 126, 234, 0.4)";
+              }}
             >
               Read More →
             </a>

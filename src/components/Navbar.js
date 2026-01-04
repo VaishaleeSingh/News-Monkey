@@ -22,10 +22,20 @@ export default function Navbar(props) {
 
   const selectedCountry = countries.find(c => c.code === props.country) || countries[0];
 
+  const navbarStyle = props.mode === 'dark' 
+    ? { 
+        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%)',
+        color: '#fff'
+      }
+    : { 
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%)',
+        color: '#000'
+      };
+
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} fixed-top`}>
+    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} fixed-top`} style={navbarStyle}>
       <div className="container-fluid">
-        <Link className="navbar-brand fw-bold" to="/">
+        <Link className="navbar-brand fw-bold" to="/" style={{ fontSize: '1.6rem' }}>
           📰 NEWS Monkey
         </Link>
 

@@ -13,18 +13,21 @@ export default function App() {
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
-      document.body.style.backgroundColor = "#121212";
+      document.body.style.backgroundColor = "#0f172a";
       document.body.style.color = "white";
+      document.body.className = "dark-mode";
     } else {
       setMode("light");
-      document.body.style.backgroundColor = "white";
+      document.body.style.backgroundColor = "#f8fafc";
       document.body.style.color = "black";
+      document.body.className = "light-mode";
     }
   };
 
   return (
     <Router>
-      <Navbar mode={mode} toggleMode={toggleMode} country={country} setCountry={setCountry} />
+      <div className={mode === 'dark' ? 'App dark-mode' : 'App light-mode'}>
+        <Navbar mode={mode} toggleMode={toggleMode} country={country} setCountry={setCountry} />
 
       <Routes>
         <Route path="/" element={<News key={`general-${country}`} pageSize={pageSize} country={country} category="general" apiKey={apiKey} mode={mode} />} />
@@ -35,6 +38,7 @@ export default function App() {
         <Route path="/health" element={<News key={`health-${country}`} pageSize={pageSize} country={country} category="health" apiKey={apiKey} mode={mode} />} />
         <Route path="/science" element={<News key={`science-${country}`} pageSize={pageSize} country={country} category="science" apiKey={apiKey} mode={mode} />} />
       </Routes>
+      </div>
     </Router>
   );
 }
